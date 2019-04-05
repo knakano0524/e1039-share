@@ -6,5 +6,5 @@ if [ -e $DIR_E1039_SHARE/root/6.16.00/bin/thisroot.sh ] ; then
 fi
 export            PATH=$DIR_E1039_SHARE/inst/bin:$PATH
 export           CPATH=$DIR_E1039_SHARE/inst/include:$CPATH
-export    LIBRARY_PATH=$DIR_E1039_SHARE/inst/lib:$LIBRARY_PATH
-export LD_LIBRARY_PATH=$DIR_E1039_SHARE/inst/lib:$LD_LIBRARY_PATH
+export    LIBRARY_PATH=$DIR_E1039_SHARE/inst/lib:$DIR_E1039_SHARE/inst/lib64:$LIBRARY_PATH
+export LD_LIBRARY_PATH=$DIR_E1039_SHARE/inst/lib:$DIR_E1039_SHARE/inst/lib64:$LD_LIBRARY_PATH
