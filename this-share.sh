@@ -14,8 +14,8 @@ done
 shift $((OPTIND - 1))
 
 FN_THISROOT=$DIR_E1039_SHARE/root/6.16.00/bin/thisroot.sh
-test $USE_ROOT5 && FN_THISROOT=$DIR_E1039_SHARE/root5/5.34.38/bin/thisroot.sh
-echo $FN_THISROOT
+test $USE_ROOT5 && FN_THISROOT=$DIR_E1039_SHARE/root/5.34.38/bin/thisroot.sh
+#echo $FN_THISROOT
 test -e $FN_THISROOT && source $FN_THISROOT
 
 export            PATH=$DIR_E1039_SHARE/inst/bin:$PATH
