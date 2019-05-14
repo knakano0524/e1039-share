@@ -1,6 +1,11 @@
 export DIR_E1039_SHARE=$(dirname $(readlink -f $BASH_SOURCE))
 export LC_ALL=C
 
+## For the new E1039 directory hierarchy.
+## DIR_E1039_SHARE will be obsolete in future.
+export E1039_SHARE=$DIR_E1039_SHARE/inst
+export E1039_SHARE_BASE=$DIR_E1039_SHARE
+
 OPTIND=1
 while getopts ":5" OPT ; do
     case $OPT in

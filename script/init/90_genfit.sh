@@ -5,7 +5,6 @@
 set -e
 test -z $DIR_E1039_SHARE && exit 9
 test -e $DIR_E1039_SHARE/inst/lib/libgenfit2.so && exit
-source  $DIR_E1039_SHARE/this-share.sh # GenFit needs ROOT
 
 DIR_WORK=$DIR_E1039_SHARE/src/genfit
 mkdir -p $DIR_WORK
