@@ -4,9 +4,9 @@
 ##
 set -e
 test -z $DIR_E1039_SHARE && exit 9
-test -e $DIR_E1039_SHARE/root/5.34.38 && exit
+test -e $DIR_E1039_SHARE/inst/root/5.34.38/bin/hist2workspace && exit
 
-DIR_WORK=$DIR_E1039_SHARE/root
+DIR_WORK=$DIR_E1039_SHARE/inst/root
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 wget --quiet https://root.cern.ch/download/root_v5.34.38.source.tar.gz

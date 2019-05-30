@@ -20,6 +20,11 @@ while read PKG ; do
 done <<EOF
   screen
   git-all
+  gcc
+  gcc-c++
+  gcc-gfortran
+  boost-devel
+  python-devel
   cmake
   doxygen
   mariadb-devel
