@@ -3,12 +3,13 @@
 ## Install Pythia6, which is required by e1039-core/simulation.
 ##
 set -e
-test -z $DIR_E1039_SHARE && exit 9
-test -e $DIR_E1039_SHARE/inst/lib/libPythia6.so && exit
+test -z $DIR_BUILD && exit 9
+test -z $DIR_INST  && exit 9
+test -e $DIR_INST/lib/libPythia6.so && exit
 
 DIR_DAT=$(readlink -f ${0%'.sh'})
 
-DIR_WORK=$DIR_E1039_SHARE/src/pythia6
+DIR_WORK=$DIR_BUILD/pythia6
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 
@@ -19,7 +20,7 @@ chmod 775 build_pythia6.sh
 patch <$DIR_DAT/patch.txt
 
 ./build_pythia6.sh 6.4.28
-cp -a v6_428/lib/libPythia6.so $DIR_E1039_SHARE/inst/lib
+cp -a v6_428/lib/libPythia6.so $DIR_INST/lib
 
 
 ## libPythia6.so could be created by the self-compilation procedure below but

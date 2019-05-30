@@ -3,10 +3,11 @@
 ## Install ROOT5
 ##
 set -e
-test -z $DIR_E1039_SHARE && exit 9
-test -e $DIR_E1039_SHARE/root/5.34.38 && exit
+test -z $DIR_BUILD && exit 9
+test -z $DIR_INST  && exit 9
+test -e $DIR_INST/root/5.34.38 && exit
 
-DIR_WORK=$DIR_E1039_SHARE/root
+DIR_WORK=$DIR_BUILD/root
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 wget --quiet https://root.cern.ch/download/root_v5.34.38.source.tar.gz

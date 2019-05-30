@@ -1,5 +1,4 @@
 #!/bin/bash
-
 DIR_SCRIPT=$(dirname $(readlink -f $0))
 DIR_TOP=$(dirname $DIR_SCRIPT)
 #echo $DIR_SCRIPT
@@ -10,14 +9,12 @@ if [ -z "$1" ] ; then
     echo "Abort."
     exit
 fi
-DIR_INST=$(readlink -f $1)
-echo $DIR_INST
+export DIR_INST=$(readlink -f $1)
+export DIR_BUILD=$DIR_TOP/build
 
 mkdir -p $DIR_INST
 cp -a $DIR_SCRIPT/this-share-org.sh $DIR_INST/this-share.sh
 source $DIR_INST/this-share.sh
-
-exit
 
 for FN_SH in $DIR_SCRIPT/init/[0-9][0-9]_*.sh ; do
     FN_LOG=$DIR_TOP/log/log_$(basename $FN_SH .sh).txt
