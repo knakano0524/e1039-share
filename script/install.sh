@@ -1,17 +1,26 @@
 #!/bin/bash
 
-if [ "X$1" != "Xgo" ] ; then
-    echo "This script might cause a significant system-wide change."
-    echo "If you really execute it, append 'go' argument, i.e. '$0 go'."
+DIR_SCRIPT=$(dirname $(readlink -f $0))
+DIR_TOP=$(dirname $DIR_SCRIPT)
+#echo $DIR_SCRIPT
+#echo $DIR_TOP
+
+if [ -z "$1" ] ; then
+    echo "The 1st argument must be an installation directory."
     echo "Abort."
     exit
 fi
+DIR_INST=$(readlink -f $1)
+echo $DIR_INST
 
-DIR_SCRIPT=$(dirname $(readlink -f $0))
-source $DIR_SCRIPT/../this-share.sh
+mkdir -p $DIR_INST
+cp -a $DIR_SCRIPT/this-share-org.sh $DIR_INST/this-share.sh
+source $DIR_INST/this-share.sh
+
+exit
 
 for FN_SH in $DIR_SCRIPT/init/[0-9][0-9]_*.sh ; do
-    FN_LOG=$DIR_SCRIPT/log/log_$(basename $FN_SH .sh).txt
+    FN_LOG=$DIR_TOP/log/log_$(basename $FN_SH .sh).txt
     echo "----------------------------------------------------------------"
     echo "Script: $FN_SH"
     echo "----------------"
