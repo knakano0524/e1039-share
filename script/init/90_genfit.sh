@@ -7,6 +7,8 @@ test -z $DIR_BUILD && exit 9
 test -z $DIR_INST  && exit 9
 test -e $DIR_INST/lib/libgenfit2.so && exit
 
+source $DIR_INST/this-share.sh
+
 DIR_WORK=$DIR_BUILD/genfit
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
