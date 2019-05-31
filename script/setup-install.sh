@@ -27,3 +27,10 @@ fi
 export DIR_INST=$(readlink -f $1)
 export DIR_TOP=$(dirname $DIR_SCRIPT)
 export DIR_BUILD=$DIR_TOP/build$ROOT_VER
+
+##
+## Setup script
+##
+mkdir -p $DIR_INST
+cp $DIR_SCRIPT/this-share-org.sh $DIR_INST/this-share.sh
+source $DIR_INST/this-share.sh
