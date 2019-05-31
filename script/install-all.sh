@@ -1,17 +1,14 @@
 #!/bin/bash
+DIR_SCRIPT=$(dirname $(readlink -f $0))
 
-if [ "X$1" != "Xgo" ] ; then
-    echo "This script might cause a significant system-wide change."
-    echo "If you really execute it, append 'go' argument, i.e. '$0 go'."
-    echo "Abort."
+if [ -z $DIR_INST ] ; then
+    echo "The shell environment is not ready for installation."
+    echo "Please refer to 'README.md'.  Abort."
     exit
 fi
 
-DIR_SCRIPT=$(dirname $(readlink -f $0))
-source $DIR_SCRIPT/../this-share.sh
-
 for FN_SH in $DIR_SCRIPT/init/[0-9][0-9]_*.sh ; do
-    FN_LOG=$DIR_SCRIPT/log/log_$(basename $FN_SH .sh).txt
+    FN_LOG=$DIR_TOP/log/log_$(basename $FN_SH .sh).txt
     echo "----------------------------------------------------------------"
     echo "Script: $FN_SH"
     echo "----------------"
@@ -25,3 +22,11 @@ for FN_SH in $DIR_SCRIPT/init/[0-9][0-9]_*.sh ; do
 done
 echo "----------------------------------------------------------------"
 echo "All have finished.  Congratulations!!"
+
+{
+    echo "The e1039-share package:"
+    echo "Installed with $DIR_TOP"
+    echo "          by $USER"
+    echo "          on $HOSTNAME"
+    echo "          at $(date)."
+} >$DIR_INST/install.txt

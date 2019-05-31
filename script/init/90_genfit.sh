@@ -3,10 +3,13 @@
 ## Install GenFit, which is required by e1039-core/packages/PHGenFitPkg
 ##
 set -e
-test -z $DIR_E1039_SHARE && exit 9
-test -e $DIR_E1039_SHARE/inst/lib/libgenfit2.so && exit
+test -z $DIR_BUILD && exit 9
+test -z $DIR_INST  && exit 9
+test -e $DIR_INST/lib/libgenfit2.so && exit
 
-DIR_WORK=$DIR_E1039_SHARE/src/genfit
+source $DIR_INST/this-share.sh
+
+DIR_WORK=$DIR_BUILD/genfit
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 
@@ -20,6 +23,6 @@ cd ../GenFit-build
 # the PHGenFitPkg package assumes the header files are in "include/GenFit/".
 # In the future it is better to modify the PHGenFitPkg package 
 # so that this special option is not needed.
-cmake -DCMAKE_INSTALL_PREFIX=$DIR_E1039_SHARE/inst -DINCLUDE_OUTPUT_DIRECTORY:PATH=$DIR_E1039_SHARE/inst/include/GenFit ../GenFit
+cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST -DINCLUDE_OUTPUT_DIRECTORY:PATH=$DIR_INST/include/GenFit ../GenFit
 make
 make install
