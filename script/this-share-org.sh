@@ -5,6 +5,10 @@ FN_THISROOT=$E1039_SHARE/root/bin/thisroot.sh
 test -e $FN_THISROOT && source $FN_THISROOT
 unset FN_THISROOT
 
+FN_GEANT4=$E1039_SHARE/bin/geant4.sh
+test -e $FN_GEANT4 && source $FN_GEANT4
+unset FN_GEANT4
+
 export            PATH=$E1039_SHARE/bin:$PATH
 export           CPATH=$E1039_SHARE/include:$CPATH
 export    LIBRARY_PATH=$E1039_SHARE/lib:$E1039_SHARE/lib64:$LIBRARY_PATH
