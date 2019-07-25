@@ -10,7 +10,10 @@ if ! grep -q 'Scientific Linux release 7.6' /etc/redhat-release ; then
     echo "Abort since this script assumes this version."
     exit 1
 fi
-
+if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+    echo "Do nothing on gpvm."
+    exit 0
+fi
 
 LIST_ALL="$(yum list installed)"
 

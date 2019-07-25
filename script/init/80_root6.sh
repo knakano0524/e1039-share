@@ -20,8 +20,13 @@ wget --quiet https://root.cern/download/root_v6.16.00.source.tar.gz
 tar xzf root_v6.16.00.source.tar.gz
 mkdir build
 cd    build
-cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on ../root-6.16.00
-cmake --build . --target install -- -j6
 
-##  Note below
-# yum install libXmu-devel xerces-c-devel mesa-libGL-devel
+if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+    OPT_EXTRA='-DGIF_INCLUDE_DIR:PATH=GIF_INCLUDE_DIR-NOTFOUND  -DGIF_LIBRARY:FILEPATH=GIF_LIBRARY-NOTFOUND'
+    # Without this option, cmake tries to link the 32-bit file 
+    # (/usr/lib/libgif.so) and thus fails.  Why is '/usr/lib64/libgif.so'
+    # missing on gpvm?!  The option below works as well.
+    #OPT_EXTRA='-DGIF_LIBRARY=/usr/lib64/libgif.so.4'
+fi
+cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on $OPT_EXTRA ../root-6.16.00
+cmake --build . --target install -- -j6
