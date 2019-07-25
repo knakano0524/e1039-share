@@ -22,10 +22,10 @@ mkdir build
 cd    build
 
 if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
-    OPT_EXTRA='-DGIF_INCLUDE_DIR:PATH=GIF_INCLUDE_DIR-NOTFOUND  -DGIF_LIBRARY:FILEPATH=GIF_LIBRARY-NOTFOUND'
-    # Without this option, cmake tries to link the 32-bit file 
+    OPT_EXTRA='-DGIF_INCLUDE_DIR= -DGIF_LIBRARY='
+    # Without these options, cmake tries to link the 32-bit file 
     # (/usr/lib/libgif.so) and thus fails.  Why is '/usr/lib64/libgif.so'
-    # missing on gpvm?!  The option below works as well.
+    # missing on gpvm?!  The option below works also.
     #OPT_EXTRA='-DGIF_LIBRARY=/usr/lib64/libgif.so.4'
 fi
 cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on $OPT_EXTRA ../root-6.16.00
