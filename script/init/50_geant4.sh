@@ -18,6 +18,11 @@ cmake  -DCMAKE_INSTALL_PREFIX=$DIR_INST  -DCLHEP_ROOT_DIR=$DIR_INST  -DGEANT4_BU
 make -j6
 make install
 
+if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+    ## Reduce the number of files to mitigate the load on CVMFS.
+    rm -r $DIR_INST/share/Geant4-*/examples
+fi
+
 ## Note
 # The cmake option "-DGEANT4_BUILD_CXXSTD=c++11" was needed because of
 # "char16_t" used in Xerces-c-3.2.2.  Probably it is not needed in case of

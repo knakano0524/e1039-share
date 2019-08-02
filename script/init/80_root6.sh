@@ -30,3 +30,8 @@ if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
 fi
 cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on $OPT_EXTRA ../root-6.16.00
 cmake --build . --target install -- -j6
+
+if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+    ## Reduce the number of files to mitigate the load on CVMFS.
+    rm -r $DIR_INST/root/{man,test,tutorials}
+fi
