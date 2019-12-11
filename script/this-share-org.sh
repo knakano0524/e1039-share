@@ -1,9 +1,18 @@
 
 if [ $E1039_SHARE ] ; then # Clean up the old components
-    PATH=${PATH//"$E1039_SHARE/bin:"}
-    CPATH=${CPATH//"$E1039_SHARE/include:"}
-    LIBRARY_PATH=${LIBRARY_PATH//"$E1039_SHARE/lib:$E1039_SHARE/lib64:"}
-    LD_LIBRARY_PATH=${LD_LIBRARY_PATH//"$E1039_SHARE/lib:$E1039_SHARE/lib64:"}
+    function DropEleFromPath {
+	local -r NAME=$1
+	local -r  ELE=$2
+	local -r CONT=$(eval "echo :\$$NAME:" | sed -e 's/:/::/g' -e "s%:$ELE:%%g" -e 's/:\+/:/g' -e 's/^://' -e 's/:$//')
+	eval "$NAME=$CONT"
+    }
+    DropEleFromPath PATH            $E1039_SHARE/bin
+    DropEleFromPath CPATH           $E1039_SHARE/include
+    DropEleFromPath LIBRARY_PATH    $E1039_SHARE/lib
+    DropEleFromPath LIBRARY_PATH    $E1039_SHARE/lib64
+    DropEleFromPath LD_LIBRARY_PATH $E1039_SHARE/lib
+    DropEleFromPath LD_LIBRARY_PATH $E1039_SHARE/lib64
+    unset -f DropEleFromPath
 fi
 
 export E1039_SHARE=$(dirname $(readlink -f $BASH_SOURCE))
