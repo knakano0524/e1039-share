@@ -5,8 +5,8 @@ if [ ! -e /etc/redhat-release ] ; then
     echo "Abort since this script assumes Scientific Linux."
     exit 1
 fi
-if ! grep -q 'Scientific Linux release 7.6' /etc/redhat-release ; then
-    echo "The OS version seems not SL 7.6."
+if ! grep -q 'Scientific Linux release 7.[67] ' /etc/redhat-release ; then
+    echo "The OS version seems not SL 7.6 nor 7.7."
     echo "Abort since this script assumes this version."
     exit 1
 fi

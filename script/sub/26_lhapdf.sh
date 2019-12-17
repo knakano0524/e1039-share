@@ -18,6 +18,6 @@ cd LHAPDF-6.2.1
 make
 make install
 
-for PDF in CT10nlo CT10 CT14lo CT14nlo MMHT2014lo68cl MMHT2014nlo68cl ; do
-    wget --quiet http://www.hepforge.org/archive/lhapdf/pdfsets/6.2/$PDF.tar.gz -O- | tar xz -C $DIR_INST/share/LHAPDF
-done
+#for PDF in CT10nlo CT10 CT14lo CT14nlo MMHT2014lo68cl MMHT2014nlo68cl ; do
+#    wget --quiet http://www.hepforge.org/archive/lhapdf/pdfsets/6.2/$PDF.tar.gz -O- | tar xz -C $DIR_INST/share/LHAPDF
+#done

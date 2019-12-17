@@ -7,7 +7,7 @@ if [ -z $DIR_INST ] ; then
     exit
 fi
 
-for FN_SH in $DIR_SCRIPT/init/[0-9][0-9]_*.sh ; do
+for FN_SH in $DIR_SCRIPT/sub/[0-9][0-9]_*.sh ; do
     FN_LOG=$DIR_TOP/log/log_$(basename $FN_SH .sh).txt
     echo "----------------------------------------------------------------"
     echo "Script: $FN_SH"
@@ -29,4 +29,4 @@ echo "All have finished.  Congratulations!!"
     echo "          by $USER"
     echo "          on $HOSTNAME"
     echo "          at $(date)."
-} >$DIR_INST/install.txt
+} >>$DIR_INST/install.txt

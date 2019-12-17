@@ -15,25 +15,18 @@ Remarks:
 
 - "/usr/local/src" is a build directory.  Any other directory is fine.  You better use a local (not network) directory for faster compilations.
 - "/data2/e1039/share" is an install directory.  Any other directory is fine.
+- You have to execute the 4th command (`source ...)` again when opening a new shell environment (i.e. text terminal).
+  It does not break any files already installed (but sets the environmental variables needed during the installation).
 - When a system-wide (i.e. rpm) package is missing, "install-all.sh" auto-detects it and asks you to install it.  Then you should execute "install-all.sh" again.
-
-## Usage with ROOT 5
-
-You can use option "-5" of "setup-install.sh" to select ROOT 5 instead of 6.
-Below is an example;
-
-```
-source setup-install.sh -5 /data2/e1039/share5
-```
 
 ## Details about Software Installation
 
-Each software package in e1039-share is installed via a corresponding subscript in "script/init/".  The contents of subscripts are rather simple.  You could modify them when encountering error.  You might have to manually clean up the build directory of a package when building it again.
+Each software package in e1039-share is installed via a corresponding subscript in "script/sub/".  The contents of subscripts are rather simple.  You could modify them when encountering error.  You might have to manually clean up the build directory of a package when building it again.
 
 You can execute one subscript alone when necessary.
 
 ```
-./init/90_genfit.sh
+./sub/90_genfit.sh
 ```
 
 ### Rule of Subscirpts

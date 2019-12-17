@@ -5,7 +5,6 @@
 set -e
 test -z $DIR_BUILD && exit 9
 test -z $DIR_INST  && exit 9
-test "X$ROOT_VER" != 'X6' && exit
 test -e $DIR_INST/root/bin/thisroot.sh && exit
 
 export LC_ALL=C
