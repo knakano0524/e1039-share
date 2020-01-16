@@ -18,8 +18,7 @@ fi
 export E1039_SHARE=$(dirname $(readlink -f $BASH_SOURCE))
 export LC_ALL=C
 
-export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
-#export LHAPDF_DATA_PATH=$E1039_SHARE/share/LHAPDF
+export LHAPDF_DATA_PATH=$E1039_SHARE/share/LHAPDF:/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
 
 FN_THISROOT=$E1039_SHARE/root/bin/thisroot.sh
 test -e $FN_THISROOT && source $FN_THISROOT
