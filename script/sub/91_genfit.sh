@@ -5,19 +5,21 @@
 set -e
 test -z $DIR_BUILD && exit 9
 test -z $DIR_INST  && exit 9
-test -e $DIR_INST/lib/libgenfit2.so && exit
+test -e $DIR_INST/lib64/libgenfit2.so && exit
 
 source $DIR_INST/this-share.sh
+export RAVEPATH=$DIR_BUILD/rave/rave
 
 DIR_DAT=$(readlink -f ${0%'.sh'})
 DIR_WORK=$DIR_BUILD/genfit
+rm -rf   $DIR_WORK
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 
-git clone https://github.com/GenFit/GenFit.git
+git clone https://github.com/E1039-Collaboration/GenFit.git
 mkdir GenFit-build
 cd    GenFit
-git checkout cd7d73739a5950cda91e8de6703ca54aa3832342
+git checkout c94316de60714f9e8a9bd180b4e9ca0948688dac
 patch -p0 <$DIR_DAT/patch.txt  # Made by Abinash, DocDB 7650
 cd ../GenFit-build
 
