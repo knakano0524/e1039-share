@@ -19,8 +19,7 @@ cd       $DIR_WORK
 git clone https://github.com/E1039-Collaboration/GenFit.git
 mkdir GenFit-build
 cd    GenFit
-git checkout c94316de60714f9e8a9bd180b4e9ca0948688dac
-patch -p0 <$DIR_DAT/patch.txt  # Made by Abinash, DocDB 7650
+git checkout e1039
 cd ../GenFit-build
 
 # The "-DINCLUDE_OUTPUT_DIRECTORY:PATH" option is needed because
