@@ -10,7 +10,7 @@ test -e $DIR_INST/lib64/libG4global.so && exit
 DIR_WORK=$DIR_BUILD/geant4
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
-wget --quiet http://geant4.cern.ch/support/source/geant4.10.01.p03.tar.gz
+wget --quiet http://cern.ch/geant4-data/releases/geant4.10.01.p03.tar.gz
 tar xzf geant4.10.01.p03.tar.gz
 mkdir   geant4.10.01.p03-build
 cd      geant4.10.01.p03-build

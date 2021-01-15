@@ -11,11 +11,11 @@ DIR_WORK=$DIR_BUILD/eigen
 mkdir -p $DIR_WORK
 cd       $DIR_WORK
 
-wget --quiet http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
-tar xjf 3.3.7.tar.bz2
+wget --quiet https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2
+tar xjf eigen-3.3.7.tar.bz2
 
 mkdir -p $DIR_INST/include
-cp -a eigen-eigen-323c052e1731/Eigen $DIR_INST/include
+cp -a eigen-3.3.7/Eigen $DIR_INST/include
 
 # When I used cmake to install this software (by the following commands),
 # the directory hierarchy becomes "$DIR_E1039_SHARE/inst/include/eigen3/Eigen",

@@ -27,7 +27,7 @@ if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
     # missing on gpvm?!  The option below works also.
     #OPT_EXTRA='-DGIF_LIBRARY=/usr/lib64/libgif.so.4'
 fi
-cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on $OPT_EXTRA ../root-6.16.00
+cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on -Ddavix=off $OPT_EXTRA ../root-6.16.00
 cmake --build . --target install -- -j6
 
 if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
