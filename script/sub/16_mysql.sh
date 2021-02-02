@@ -4,8 +4,8 @@
 ##
 set -e
 
-if [ ${HOSTNAME:0:13} != 'spinquestgpvm' ] ; then
-    echo "Do nothing since host != gpvm."
+if [ -z "$SINGULARITY_NAME" -a ${HOSTNAME:0:13} != 'spinquestgpvm' ] ; then
+    echo "Do nothing for this environment."
     exit 0
 fi
 

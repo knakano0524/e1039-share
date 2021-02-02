@@ -35,7 +35,9 @@ done <<EOF
   doxygen
   mariadb-devel
   sqlite-devel
+  ncurses-devel
   zlib-devel
+  bzip2-devel
   freetype-devel
   pcre-devel
   xz-devel
