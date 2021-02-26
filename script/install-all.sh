@@ -4,7 +4,7 @@ DIR_SCRIPT=$(dirname $(readlink -f $0))
 if [ -z $DIR_INST ] ; then
     echo "The shell environment is not ready for installation."
     echo "Please refer to 'README.md'.  Abort."
-    exit
+    exit 1
 fi
 
 for FN_SH in $DIR_SCRIPT/sub/[0-9][0-9]_*.sh ; do
@@ -17,7 +17,7 @@ for FN_SH in $DIR_SCRIPT/sub/[0-9][0-9]_*.sh ; do
     if [ $RET -ne 0 ] ; then
 	echo "Abort as '$FN_SH' returned '$RET'."
 	echo "Check details in '$FN_LOG'."
-	exit
+	exit $RET
     fi
 done
 echo "----------------------------------------------------------------"
