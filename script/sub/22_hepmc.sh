@@ -1,6 +1,7 @@
 #!/bin/bash
 ##
 ## Install HepMC, which is required by ???.
+## Actually a YUM package "HepMC-devel" (2.06.11) could be usable.
 ##
 set -e
 test -z $DIR_BUILD && exit 9

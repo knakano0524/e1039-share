@@ -20,17 +20,16 @@ tar xzf root_v6.16.00.source.tar.gz
 mkdir build
 cd    build
 
-if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+if [ -e /usr/lib/libgif.so -a ! -e /usr/lib64/libgif.so ] ; then
     OPT_EXTRA='-DGIF_INCLUDE_DIR= -DGIF_LIBRARY='
-    # Without these options, cmake tries to link the 32-bit file 
-    # (/usr/lib/libgif.so) and thus fails.  Why is '/usr/lib64/libgif.so'
-    # missing on gpvm?!  The option below works also.
-    #OPT_EXTRA='-DGIF_LIBRARY=/usr/lib64/libgif.so.4'
+    # This case happens when the i686 package of "giflib-devel" is installed
+    # but the x86_64 one isn't.  Indeed "spinquestgpvm" is in such situation.
+    # Without these options, cmake tries to link the i686 file and thus fails.
 fi
 cmake -DCMAKE_INSTALL_PREFIX=$DIR_INST/root -Dminuit2=on -Droofit=on -Dopengl=on -Ddavix=off $OPT_EXTRA ../root-6.16.00
 cmake --build . --target install -- -j6
 
-if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
+if [ "$SINGULARITY_NAME" -o ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
     ## Reduce the number of files to mitigate the load on CVMFS.
     rm -r $DIR_INST/root/{man,test,tutorials}
 fi

@@ -1,5 +1,8 @@
 #!/bin/bash
-
+##
+## All the packages listed here are required for spinquestgpvm as well.
+## We have to submit a Services Ticket to install any missing package.
+##
 if [ ! -e /etc/redhat-release ] ; then
     echo "Cannot find '/etc/redhat-release'."
     echo "Abort since this script assumes Scientific Linux."
@@ -10,10 +13,6 @@ if ! grep -q 'Scientific Linux release 7.[6789] ' /etc/redhat-release ; then
     echo "Abort since this script assumes this version."
     exit 1
 fi
-if [ ${HOSTNAME:0:13} = 'spinquestgpvm' ] ; then
-    echo "Do nothing on gpvm."
-    exit 0
-fi
 
 LIST_ALL="$(yum list installed)"
 
@@ -21,7 +20,6 @@ declare -a LIST_PKG=()
 while read PKG ; do
     echo "$LIST_ALL" | grep -q "^${PKG}\." || LIST_PKG+=("$PKG")
 done <<EOF
-  screen
   wget
   patch
   libtool
@@ -35,7 +33,9 @@ done <<EOF
   doxygen
   mariadb-devel
   sqlite-devel
+  ncurses-devel
   zlib-devel
+  bzip2-devel
   freetype-devel
   pcre-devel
   xz-devel
@@ -52,6 +52,8 @@ done <<EOF
   xerces-c-devel
   mesa-libGL-devel
   mesa-libGLU-devel
+  gl2ps-devel
+  xxhash-devel
 EOF
 
 if [ ${#LIST_PKG[*]} -eq 0 ] ; then
@@ -63,12 +65,3 @@ else
     exit 1
 fi
 exit 0
-
-
-#yum install \
-#  screen git-all cmake doxygen \
-#  mariadb-devel sqlite-devel \
-#  zlib-devel \
-#  freetype-devel pcre-devel xz-devel lz4-devel libX11-devel \
-#  libXpm-devel libXft-devel libXext-devel libfftw-devel \
-#  gsl-devel libxml2-devel openssl-devel

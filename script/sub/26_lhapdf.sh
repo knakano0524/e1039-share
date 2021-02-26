@@ -1,6 +1,7 @@
 #!/bin/bash
 ##
 ## Install LHAPDF, which is wanted by serveral users
+## Actually a YUM package "lhapdf-devel" (6.3.0) could be usable.
 ##
 set -e
 test -z $DIR_BUILD && exit 9
