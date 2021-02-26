@@ -1,6 +1,7 @@
 #!/bin/bash
 ##
 ## Install Eigen, which is required by e1039-core/simulation/g4main.
+## Actually a YUM package "eigen3-devel" (3.3.7) could be usable.
 ##
 set -e
 test -z $DIR_BUILD && exit 9
