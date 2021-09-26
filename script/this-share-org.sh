@@ -18,6 +18,14 @@ fi
 export E1039_SHARE=$(dirname $(readlink -f $BASH_SOURCE))
 export LC_ALL=C
 
+## UVA Rivanna
+module purge
+module use /share/apps/modulefiles
+module load gcc/6.5.0
+module load boost/1.68.0
+module load physics/xerces-c
+module load gsl
+
 export LHAPDF_DATA_PATH=$E1039_SHARE/share/LHAPDF:/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
 
 FN_THISROOT=$E1039_SHARE/root/bin/thisroot.sh

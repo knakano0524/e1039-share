@@ -18,6 +18,8 @@ git clone https://github.com/E1039-Collaboration/rave.git
 cd    rave
 git checkout e232f40c84b2263b29f8496da2353bde550dfd26
 
+export CXXFLAGS="-std=c++11 $CXXFLAGS"
+
 ./bootstrap
 ./configure --prefix=$DIR_INST --with-clhep=$DIR_INST --disable-java
 make -j4
